@@ -2,6 +2,7 @@ package com.mvmlabs.springboot.web;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,6 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.mvmlabs.springboot.entity.Person;
+import com.mvmlabs.springboot.repository.PersonRepository;
+import com.mvmlabs.springboot.services.MyBean;
 
 /**
  * Controller that demonstrates tiles mapping, reguest parameters and path variables.
@@ -18,7 +23,18 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class GreetingController {
 	private Log log = LogFactory.getLog(this.getClass());
+	
+	@Autowired
+	private PersonRepository personRepository;
+	
+	@Autowired
+	private MyBean myBean;
 
+	@RequestMapping(value = "/", method=RequestMethod.GET)
+	public String homePage() {
+	    return home();
+	}
+	
     @RequestMapping(value = "/home", method=RequestMethod.GET)
 	public String home() {
 	    return "site.homepage";
@@ -33,6 +49,10 @@ public class GreetingController {
 	@RequestMapping(value = "/greet/{name}", method=RequestMethod.GET)
 	public ModelAndView greetTwoWays(@PathVariable(value="name") final String name, final Model model) {
 		log.info("Controller has been invoked with Path Variable name = '" + name + "'.");
+		Person person = new Person();
+		person.setName(name);
+		personRepository.save(person);
+		myBean.test();
 		return new ModelAndView("site.greeting", "name", name);
 	}
 }
