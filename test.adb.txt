@@ -1,1 +1,2 @@
 ||adtima.hl33.vcdn.vn^
+||adtima.*.vcdn.vn^
