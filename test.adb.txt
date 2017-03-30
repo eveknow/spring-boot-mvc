@@ -2,3 +2,4 @@
 ||adtima.cache12.vcdn.vn^
 ||adtima.*.vcdn.vn^
 ||zone.uniad.vn^
+||uniad.phimmoi.net^
