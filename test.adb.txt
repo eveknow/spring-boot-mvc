@@ -3,3 +3,4 @@
 ||adtima.*.vcdn.vn^
 ||zone.uniad.vn^
 ||uniad.phimmoi.net^
+||new-cdn.blueseed.tv^
