@@ -5,3 +5,5 @@
 ||uniad.phimmoi.net^
 ||new-cdn.blueseed.tv^
 ||hot.vungtv.com^
+||vo.fod4.com^
+|*.fod4.com^
